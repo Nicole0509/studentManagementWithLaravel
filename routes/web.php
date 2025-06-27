@@ -6,11 +6,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('about-us',function(){
-    return view('aboutus');
+Route::get('about-us/{name}/{id}',function($name, $id){
+    // $name = 'tester';
+    // $email = 'tester@gmail.com';
+    // return view('aboutus')->with('name',$name)->with('email',$email);
+    // return view('aboutus', compact('name', 'email'));
+    // return view('aboutus', ['name' => $name, 'email' => $email]);
+
+    return view('aboutus', compact('name', 'id'));
 });
 
-Route::view('contact-us', 'contactus');
+// Route::view('contact-us', 'contactus',['name' => 'John Doe', 'email' => 'tester@gmail.com']);
+Route::view('contact-us/{name}/{id}', 'contactus');
+
 
 // Route::get('/',function(){
 //     return 'Hello Nicole!';
