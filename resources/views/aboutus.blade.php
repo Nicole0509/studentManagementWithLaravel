@@ -1,12 +1,16 @@
-<html>
-    <body>
-        <h1>About Us</h1>
-        <h2>Name: {{$name}}</h2>
-        {{-- <h2>Email: {{$email}}</h2> --}}
-        <h2>ID: {{$id}}</h2>
+@extends('layouts.app')
 
-        @include('SubViews.Input',[
-            'myname' => $name,
-        ])
-    </body>
-</html>
+@section('content')
+    <section>
+        <h1>About us</h1>
+        <p>This is a simple layout with a sidebar and main content area.</p>            
+    </section>
+@endsection
+
+@section('scripts')
+<script>
+    alert('hello this is the page');
+</script>
+    
+@endsection
+
