@@ -12,7 +12,8 @@ class StudentController extends Controller
         return 'hello from the controller';
     }
 
-    public function aboutUs(){
-        return 'this is hi from the aboutUs mathod from the controller';
+    public function aboutUs($id, $name){
+        // return 'ID No: '.$id.' Name: '.$name;
+        return view('aboutus', compact('id', 'name'));
     }
 }
