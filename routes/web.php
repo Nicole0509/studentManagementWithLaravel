@@ -1,22 +1,19 @@
 <?php
 
-use App\Http\Controllers\SecondTestController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StudentController;
-use App\Http\Controllers\TestController;
+use App\Http\Controllers\TeacherController;
+use App\Models\Teacher;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('contact-us/', 'contactus');
+// Route::get('teachers',function(){
+//     return Teacher::all();
+// });
 
-Route::controller(StudentController::class)->group(function()
-{
-    Route::get('students', 'index');
-    Route::get('about-us/', 'aboutUs');
-});
-
-Route::get('invoke',TestController::class);
-
-Route::resource('second-test',SecondTestController::class);
+Route::get('teacher',[TeacherController::class,'index']);
+Route::get('add-teacher',[TeacherController::class,'add']);
+Route::get('show-teacher/{id}',[TeacherController::class,'show']);
+Route::get('update-teacher/{id}',[TeacherController::class,'update']);
+Route::get('delete-teacher/{id}',[TeacherController::class,'delete']);
