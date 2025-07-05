@@ -22,6 +22,7 @@ class StudentFactory extends Factory
             'email'=> $this->faker->unique()->safeEmail(),
             'age'=> $this->faker->numberBetween(10, 25),
             'date_of_birth'=> $this->faker->date('Y-m-d'),
+            'score' => $this->faker->numberBetween(40, 99),
             'gender' => $this ->faker-> randomElement(['M','F'])
         ];
     }

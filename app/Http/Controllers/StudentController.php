@@ -46,11 +46,13 @@ class StudentController extends Controller
 
    public function getData(){
     $items = DB::table('student')
-    ->where('id', '=', 2)
-    ->orWhere('name', 'like', '%test%')
-    ->orderBy('id', 'desc')
-    ->select('id', 'name',)
+    // ->count(), // Count the total number of records in the 'student' table
+    // -> max('score'); // Get the maximum score from the 'student' table
+    // ->min('score'); // Get the minimum score from the 'student' table
+    // ->avg('score'); // Get the average score from the 'student' table
+    // ->sum('score'); // Get the total sum of scores from the 'student' table
     ->get();
+    
     return $items;
    }
 
@@ -69,9 +71,10 @@ class StudentController extends Controller
    public function deleteData(){
     // Delete a student record from the 'student' table
     DB::table('student')
-        ->where('age', '>',45)
+        ->where('score', '<',35)
         ->delete();
 
     return 'Student deleted successfully';
    }
+   
 }
