@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -9,70 +10,48 @@ class StudentController extends Controller
 {
    public function addData(){
 
-    // Insert a single student record into the 'student' table
-    // DB::table('student')->insert([
-    //     'name' => 'tester',
-    //     'email' => 'tester@gmail.com',
-    //     'age' => 20,
-    //     'date_of_birth' => '2003-01-01',       
-    //     'gender' => 'M',       
-    // ]);
+    // Add a new student record to the 'student' table using Eloquent ORM
+    $item = new Student();
 
-    // Insert multiple student records into the 'student' table
-
-    DB::table('student')->insert([
-        ['name' => 'gffgfgf',
-        'email' => 'testfgfgfger@gmail.com',
-        'age' => 80,
-        'date_of_birth' => '2003-01-01',       
-        'gender' => 'M', 
-        ],
-        ['name' => 't687778gg',
-        'email' => 'gytrtytry@gmail.com',
-        'age' => 6,
-        'date_of_birth' => '2003-01-01',       
-        'gender' => 'F', 
-        ],
-        ['name' => 'tester',
-        'email' => 'tester8888@gmail.com',
-        'age' => 78,
-        'date_of_birth' => '2793-01-01',       
-        'gender' => 'M', 
-        ],
-    ]);
+    $item->name = 'tester';
+    $item->email = 'tester@gmail.com';
+    $item->age = 20;
+    $item->date_of_birth = '2003-01-01';
+    $item->gender = 'M';
+    $item->score = 66;     
+    $item->save();
 
     return 'Student added successfully';
    }
 
    public function getData(){
-    $items = DB::table('student')
-    // ->count(), // Count the total number of records in the 'student' table
-    // -> max('score'); // Get the maximum score from the 'student' table
-    // ->min('score'); // Get the minimum score from the 'student' table
-    // ->avg('score'); // Get the average score from the 'student' table
-    // ->sum('score'); // Get the total sum of scores from the 'student' table
-    ->get();
-    
-    return $items;
+    $item = Student::all();
+    // $item = Student::select('id', 'name', 'score', 'age')
+    // ->where('id','>',19)
+    // ->first();
+    // ->find(19);
+
+
+    return $item;
    }
 
    public function updateData(){
-    // Update a student record in the 'student' table
-    DB::table('student')
-        ->where('id', 3)
-        ->update([
-            'name' => 'updated Name',
-            'age' => 25,
-        ]);
+    // two ways to find a record in the 'student' table using Eloquent ORM
+    $item = Student::find(19);
+    // $item = Student::where('id', 19)->first();
+
+    $item->name = 'updated name';
+    $item->age = 100;
+    $item->save();
 
     return 'Student updated successfully';
    }
 
    public function deleteData(){
-    // Delete a student record from the 'student' table
-    DB::table('student')
-        ->where('score', '<',35)
-        ->delete();
+    // $item = Student::findOrFail(19);
+    // $item->delete();
+
+    $item = Student::findOrFail(21)->delete();
 
     return 'Student deleted successfully';
    }
