@@ -14,4 +14,18 @@ class Student extends Model
     protected $hidden = [
         'name'
     ];
+
+    // apparently returning is optional both scope functions are working correctly
+
+    public function scopeMale($query){
+        return $query->where('gender','M')
+        ->where('age', 25)
+        ;
+    }
+
+    public function scopeFemale($query, $age = 25){
+        $query->where('gender','F')
+        ->where('age', $age)
+        ;
+    }
 }

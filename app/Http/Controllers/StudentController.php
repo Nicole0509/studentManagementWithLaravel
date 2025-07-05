@@ -109,5 +109,13 @@ class StudentController extends Controller
 
     return $items;
    }
+
+   public function callQueryScope1(){
+    return Student::female()->get();
+   }
+
+   public function callQueryScope2(){
+    return Student::female(20)->get();
+   }
    
 }
