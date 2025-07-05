@@ -12,7 +12,6 @@ class Student extends Model
     protected $table = 'student';
 
     protected $hidden = [
-        'name',
-        'age'
+        'name'
     ];
 }

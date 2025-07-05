@@ -17,3 +17,5 @@ Route::get('get-data', [StudentController::class,'getData']);
 Route::get('update-data', [StudentController::class,'updateData']);
 
 Route::get('delete-data', [StudentController::class,'deleteData']);
+
+Route::get('where-conditions', [StudentController::class,'whereConditions']);
