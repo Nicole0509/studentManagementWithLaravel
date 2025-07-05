@@ -53,4 +53,25 @@ class StudentController extends Controller
     ->get();
     return $items;
    }
+
+   public function updateData(){
+    // Update a student record in the 'student' table
+    DB::table('student')
+        ->where('id', 3)
+        ->update([
+            'name' => 'updated Name',
+            'age' => 25,
+        ]);
+
+    return 'Student updated successfully';
+   }
+
+   public function deleteData(){
+    // Delete a student record from the 'student' table
+    DB::table('student')
+        ->where('age', '>',45)
+        ->delete();
+
+    return 'Student deleted successfully';
+   }
 }
