@@ -25,11 +25,19 @@ class StudentController extends Controller
    }
 
    public function getData(){
+    //retrieve all student records from the 'student' table that have not been deleted
     $item = Student::all();
-    // $item = Student::select('id', 'name', 'score', 'age')
-    // ->where('id','>',19)
-    // ->first();
-    // ->find(19);
+
+    //retrieve all student records from the 'student' table that have been soft deleted
+    // $item = Student::onlyTrashed()->get();
+
+    //retrieve all student records from the 'student' table, including those that have been soft deleted
+    // but excluding those that have been permanently deleted
+    // $item = Student::withTrashed()->get();
+
+    //restoring a particular student record that was soft deleted from the 'student' table
+
+    // $item = Student::withTrashed()->find(22)->restore();
 
     return $item;
    }
@@ -47,12 +55,29 @@ class StudentController extends Controller
    }
 
    public function deleteData(){
+
+    // for soft deleting a student record with id 19 and 22 from the 'student' table
+
     // $item = Student::findOrFail(19);
     // $item->delete();
 
-    $item = Student::findOrFail(21)->delete();
+    // $item = Student::findOrFail(22)->delete();
+
+    //for permanently deleting a student record with id 22 from the 'student' table
+    $item = Student::findOrFail(22)->forceDelete();
 
     return 'Student deleted successfully';
+
+    // if(Student::where('deleted_at',null)->where('id', 29)->exists()){
+    //     // Soft delete the student record with id 22
+    //     Student::findOrFail(29)->delete();
+    //     return 'Student was soft deleted successfully';
+    // } else {
+    //     // Permanently delete the student record with id 22
+    //     Student::withTrashed()->findOrFail(29)->forceDelete();
+    //     return 'Student permanently deleted successfully';
+    // }
+
    }
 
    public function whereConditions(){
