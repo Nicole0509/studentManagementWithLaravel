@@ -8,7 +8,8 @@
         <style>
             body {
                 font-family: Arial, sans-serif;
-                background-color: #f4f4f4;
+                background-color:rgb(231, 230, 230);
+                color: #333;
                 margin: 0;
                 padding: 0;
                 display: flex;
@@ -20,7 +21,7 @@
                 list-style-type: none;
                 padding: 0;
                 margin: 0;
-                background-color: #333;
+                background-color: rgb(105, 105, 105);
                 overflow: hidden;
                 display: flex;
                 justify-content: center;
@@ -54,11 +55,12 @@
             .main-content{
                 flex: 1;
                 padding: 20px;
+                width: 75%;
             }
             footer {
                 text-align: center;
                 /* padding: 10px; */
-                background-color: #333;
+                background-color: rgb(105, 105, 105);
                 color: white;
                 position: relative;
                 bottom: 0;
