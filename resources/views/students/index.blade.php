@@ -96,7 +96,7 @@
         <h2>Students List</h2>
         <form action={{ URL('student') }} method="GET">
             <div class="search">
-                <input type="text" placeholder="Search by name or email" id="search" name="search">
+                <input type="text" placeholder="Search" id="search" name="search" value="{{ request('search') }}">
                 <button type="submit">Search</button>
             </div>
         </form>
@@ -131,24 +131,10 @@
                     </tr>
                 @endforeach
             </tbody>
-            {{-- <tbody>
-                @foreach($students as $student)
-                    <tr>
-                        <td>{{ $student->name }}</td>
-                        <td>{{ $student->email }}</td>
-                        <td>
-                            <a href="{{ route('students.edit', $student->id) }}" class="editButton">Edit</a>
-                            <form action="{{ route('students.destroy', $student->id) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="deleteButton">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody> --}}
         </table>
 
-        {{-- {{ $students->links() }} --}}
+        <div class="paginationDiv">
+            {{ $students->appends(request()->query())->links('pagination::bootstrap-5') }}
+        </div>
     </section>
 @endsection

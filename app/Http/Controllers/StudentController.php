@@ -18,7 +18,7 @@ class StudentController extends Controller
             'date_of_birth',
             'score',
          ],'like', '%' .  $request->search . '%');
-      })->get();
+      })->paginate(10);
 
       return view('students.index',compact('students'));
    }
