@@ -51,7 +51,8 @@
             border-radius: 4px;
         }
 
-        .search button{
+        .search button, 
+        .addStudentButton{
             padding: 10px 15px;
             margin-left: 10px;
             background-color: #007bff;
@@ -61,7 +62,9 @@
             cursor: pointer;
         }
 
-        .search button:hover {
+        .search button:hover,
+        .addStudentButton:hover {
+            color: white;
             background-color: #0056b3;
         }
 
@@ -78,6 +81,7 @@
         }
 
         .editButton:hover {
+            color: white;
             background-color: #218838;
         }
 
@@ -86,6 +90,7 @@
         }
 
         .deleteButton:hover {
+            color: white;
             background-color: #c82333;
         }
     </style>
@@ -98,6 +103,7 @@
             <div class="search">
                 <input type="text" placeholder="Search" id="search" name="search" value="{{ request('search') }}">
                 <button type="submit">Search</button>
+                <a class="addStudentButton" href="{{ URL('student/add') }}">Add Student</a>
             </div>
         </form>
         

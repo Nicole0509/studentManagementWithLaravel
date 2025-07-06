@@ -22,5 +22,19 @@ class StudentController extends Controller
 
       return view('students.index',compact('students'));
    }
+
+   public function create(Request $request){
+      $student = new Student();
+
+      $student->name = $request->name;
+      $student->email = $request->email;
+      $student->age = $request->age;
+      $student->gender  = $request->gender;
+      $student->date_of_birth = $request->date_of_birth;
+      $student->score = $request->score;
+      $student->save();
+
+      return redirect('student')->with('success', 'Student created successfully');  
+   }
    
 }
