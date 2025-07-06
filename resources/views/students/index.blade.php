@@ -94,15 +94,13 @@
 @section('content')
     <section>
         <h2>Students List</h2>
-        <div class="search">
-            {{-- <form action="{{ route('students.index') }}" method="GET">
-                <input type="text" name="search" placeholder="Search by name or email" value="{{ request('search') }}">
+        <form action={{ URL('student') }} method="GET">
+            <div class="search">
+                <input type="text" placeholder="Search by name or email" id="search" name="search">
                 <button type="submit">Search</button>
-            </form> --}}
-            
-            <input type="text" name="search" placeholder="Search by name or email" value="{{ request('search') }}">
-            <button type="submit">Search</button>
-        </div>
+            </div>
+        </form>
+        
         <table>
             <thead>
                 <tr>

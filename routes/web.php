@@ -10,6 +10,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('students')->controller(StudentController::class)->group(function () {
+Route::prefix('student')->controller(StudentController::class)->group(function () {
     Route::get('/', 'index');
 });
