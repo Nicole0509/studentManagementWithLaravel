@@ -34,7 +34,28 @@ class StudentController extends Controller
       $student->score = $request->score;
       $student->save();
 
-      return redirect('student')->with('success', 'Student created successfully');  
+      return redirect('student');  
+   }
+
+   public function edit($id){
+      $student = Student::findOrFail($id);
+
+      return view('students.edit', compact('student'));
+   }
+
+   public function update(Request $request, $id){
+      $student = Student::findOrFail($id);
+
+      $student->name = $request->name;
+      $student->email = $request->email;
+      $student->age = $request->age;
+      $student->gender  = $request->gender;
+      $student->date_of_birth = $request->date_of_birth;
+      $student->score = $request->score;
+      $student->update();
+
+      return redirect('student');
+
    }
    
 }
