@@ -24,8 +24,25 @@ class StudentController extends Controller
    }
 
    public function create(Request $request){
-      $student = new Student();
 
+      $request->validate([
+         'name' => 'required | string |max:255',
+         'email' => 'required | email | max:255 | unique:student,email',
+         'age' => 'required | integer | min:0 | max:100',
+         'date_of_birth' => 'required | date',
+         'gender'=> 'required | in: M,F',
+         'score' => 'required | numeric | min:0 | max:100',
+      ],[
+         'name.required' => 'Name is required',
+         'email.required' => 'Email is required',
+         'email.unique' => 'Email already exists',
+         'age.required' => 'Age is required',
+         'date_of_birth.required' => 'Date of birth is required',
+         'gender.required' => 'Please choose an option for gender',
+         'score.required' => 'Score is required',
+      ]);
+
+      $student = new Student();
       $student->name = $request->name;
       $student->email = $request->email;
       $student->age = $request->age;
@@ -56,6 +73,12 @@ class StudentController extends Controller
 
       return redirect('student');
 
+   }
+
+   public function destroy($id){
+      $student = Student::findOrFail($id)->delete();
+
+      return redirect('student');
    }
    
 }

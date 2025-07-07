@@ -132,7 +132,13 @@
                         <td>{{$student->score}}</td>
                         <td>
                             <a href="{{ URL('student/edit', $student->id) }}" class="editButton">Edit</a>
-                            <a href="#" class="deleteButton">Delete</a>
+
+                            <form action="{{ URL('student/delete', $student->id) }}" method="POST" style="display:inline;"
+                            onsubmit="return confirm('Are you sure you want to delete this student?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
